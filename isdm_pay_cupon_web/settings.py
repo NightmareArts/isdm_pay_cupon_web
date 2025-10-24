@@ -13,10 +13,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
 
 
 # Quick-start development settings - unsuitable for production
@@ -78,7 +78,7 @@ AUTH_USER_MODEL = "users.User"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-LANGUAGE_CODE = "es"       # sin i18n extra
+LANGUAGE_CODE = "es"
 TIME_ZONE = "America/Argentina/Salta"
 USE_I18N = True
 USE_TZ = True
@@ -100,12 +100,12 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-   "default": {
+    "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME"),   # <user>$<dbname>
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),   # <user>.mysql.pythonanywhere-services.com
+        "NAME": os.getenv("DB_NAME", ""),
+        "USER": os.getenv("DB_USER", ""),
+        "PASSWORD": os.getenv("DB_PASSWORD", ""),
+        "HOST": os.getenv("DB_HOST", ""),    # string vacío evita el .startswith sobre None
         "PORT": os.getenv("DB_PORT", "3306"),
         "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
     }

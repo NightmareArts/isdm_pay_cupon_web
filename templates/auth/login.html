@@ -41,18 +41,36 @@
                     {% endif %}
                 </div>
 
-                <div class="mb-1 input-wrap">
-                    <label class="form-label">Contraseña</label>
-                    {{ form.password }}
-                    <button type="button" class="eye-btn" aria-label="Mostrar contraseña" onclick="togglePass()">
-                        <svg width="22" height="22" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7Zm0 12a5 5 0 1 1 .001-10.001A5 5 0 0 1 12 17Z" />
-                        </svg>
+                <div class="mb-1">
+                  <label class="form-label">Contraseña</label>
+
+                  <div class="input-row">
+                    {{ form.password }}  {# tiene class="form-control" por el StyledAuthenticationForm #}
+
+                    <button
+                      type="button"
+                      class="eye-btn"
+                      id="togglePassBtn"
+                      aria-label="Mostrar contraseña"
+                      aria-pressed="false"
+                      title="Mostrar contraseña"
+                      onclick="togglePass()">
+
+                      <!-- ojo normal (oculto al inicio) -->
+                      <svg id="icon-eye" width="22" height="22" viewBox="0 0 24 24" style="display:none" aria-hidden="true">
+                        <path fill="currentColor" d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"/>
+                      </svg>
+
+                      <!-- ojo tachado (visible al inicio) -->
+                      <svg id="icon-eye-off" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M2.1 3.5 3.5 2.1 21.9 20.5 20.5 21.9l-2.7-2.7C16.1 20.1 14.1 21 12 21 5 21 2 14 2 14s1.1-2.3 3.2-4.3L2.1 3.5ZM12 7c7 0 10 7 10 7s-.8 1.7-2.4 3.4l-3-3A5 5 0 0 0 12 7Zm-3 5a3 3 0 0 0 4.2 2.7l-3.9-3.9c-.2.35-.3.74-.3 1.2Z"/>
+                      </svg>
                     </button>
-                    {% if form.password.errors %}
+                  </div>
+
+                  {% if form.password.errors %}
                     <div class="text-error small mt-1">{{ form.password.errors.0 }}</div>
-                    {% endif %}
+                  {% endif %}
                 </div>
 
                 {% if form.non_field_errors %}
@@ -77,11 +95,26 @@
     </div>
 
     <script>
-        function togglePass() {
-            const pass = document.getElementById("id_password");
-            if (!pass) return;
-            pass.type = (pass.type === "password") ? "text" : "password";
-        }
+      function togglePass(){
+        const pass = document.getElementById("id_password");
+        const btn  = document.getElementById("togglePassBtn");
+        const eye  = document.getElementById("icon-eye");
+        const off  = document.getElementById("icon-eye-off");
+        if(!pass) return;
+
+        // alternar tipo
+        pass.type = (pass.type === "password") ? "text" : "password";
+
+        // estado resultante
+        const visible = (pass.type === "text");
+
+        // iconos y atributos accesibles según estado resultante
+        eye.style.display = visible ? "inline" : "none";
+        off.style.display = visible ? "none" : "inline";
+        btn.setAttribute("aria-pressed", String(visible));
+        btn.setAttribute("aria-label", visible ? "Ocultar contraseña" : "Mostrar contraseña");
+        btn.setAttribute("title", visible ? "Ocultar contraseña" : "Mostrar contraseña");
+      }
     </script>
 </body>
 

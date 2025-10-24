@@ -83,24 +83,54 @@ body {
 }
 
 /* Icono ojo dentro del input */
+.input-row{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f7f8fb;
+  border: 1px solid #eef0f4;
+  border-radius: 12px;
+  padding: 4px 6px 4px 10px;  /* espacio interno */
+  transition: box-shadow .15s, border-color .15s;
+}
+
+/* el input “se come” todo el ancho */
+.input-row .form-control{
+  flex: 1 1 auto;
+  border: none;              /* quitamos borde del input */
+  outline: none;
+  background: transparent;   /* el fondo lo pone .input-row */
+  height: 48px;
+  box-shadow: none;
+  padding-left: 0;           /* ya hay padding del contenedor */
+}
+
+/* foco accesible en el contenedor */
+.input-row:focus-within{
+  border-color: #e14b4b;
+  box-shadow: 0 0 0 .2rem rgba(225, 75, 75, .15);
+}
+
 .input-wrap {
     position: relative;
 }
 
-.eye-btn {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 0;
-    background: transparent;
-    padding: 6px;
-    opacity: .6;
+/* el ojo: botón regular, sin absolute */
+.eye-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #555;
+  opacity: .7;
+  transition: opacity .15s, background-color .15s;
 }
-
-.eye-btn:hover {
-    opacity: .95;
-}
+.eye-btn:hover{ opacity: .95; background: rgba(0,0,0,.035); }
+.eye-btn:focus{ outline: 2px solid rgba(225,75,75,.35); outline-offset: 2px; }
 
 /* Links */
 .inline-help a {

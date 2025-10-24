@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Inicio · ISDM Pay{% endblock %}
+{% block content %}
+<h1 class="h4 mb-4">Inicio</h1>
+
+<div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">Mi perfil</h5>
+                <p class="card-text text-muted">Datos de tu cuenta y preferencias.</p>
+                <a class="btn btn-outline-primary" href="{% url 'perfil' %}">Ir a Perfil</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">Cuotas</h5>
+                <p class="card-text text-muted">Listado de cuotas y estados de pago.</p>
+                <a class="btn btn-outline-primary" href="{% url 'cuotas' %}">Ver Cuotas</a>
+            </div>
+        </div>
+    </div>
+
+    {% if request.user.is_admin_staff %}
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100 border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Panel Administrativo</h5>
+                <p class="card-text text-muted">Dashboard, alumnos, cobranzas y reportes.</p>
+                <a class="btn btn-primary" href="{% url 'admin_panel' %}">Abrir Panel</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

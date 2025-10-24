@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Correo enviado · ISDM Pay{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h1 class="h4 mb-3">¡Listo!</h1>
+                <p>Si el correo existe en el sistema, recibirás un email con instrucciones para restablecer tu
+                    contraseña en unos minutos.</p>
+                <a class="btn btn-primary mt-2" href="{% url 'login' %}">Volver al login</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

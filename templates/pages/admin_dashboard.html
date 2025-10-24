@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Panel Administrativo · ISDM Pay{% endblock %}
+{% block content %}
+<h1 class="h4 mb-4">Panel Administrativo</h1>
+
+<div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted mb-1">Alumnos activos</h6>
+                <div class="display-6">—</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted mb-1">Cuotas vencidas</h6>
+                <div class="display-6">—</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted mb-1">Cobrado (mes)</h6>
+                <div class="display-6">—</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted mb-1">Config pendientes</h6>
+                <div class="display-6">—</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm mt-3">
+    <div class="card-body">
+        <h5 class="card-title">Accesos rápidos</h5>
+        <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-outline-primary btn-sm" href="/admin/">Django Admin</a>
+            <a class="btn btn-outline-secondary btn-sm disabled" href="#">Gestión de alumnos</a>
+            <a class="btn btn-outline-secondary btn-sm disabled" href="#">Cobranzas</a>
+            <a class="btn btn-outline-secondary btn-sm disabled" href="#">Reportes</a>
+            <a class="btn btn-outline-secondary btn-sm disabled" href="#">Configuración</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

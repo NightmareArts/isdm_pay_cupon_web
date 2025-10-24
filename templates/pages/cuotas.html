@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Cuotas · ISDM Pay{% endblock %}
+{% block content %}
+<h1 class="h4 mb-4">Cuotas</h1>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <p class="text-muted">Aquí verás tus cuotas (monto, período, vencimiento, estado, pagos). Por ahora es un
+            placeholder.</p>
+
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
+                    <tr>
+                        <th>Período</th>
+                        <th>Monto</th>
+                        <th>Vencimiento</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-10</td>
+                        <td>$ 25.000</td>
+                        <td>10/11/2025</td>
+                        <td><span class="badge text-bg-warning">Pendiente</span></td>
+                        <td><button class="btn btn-outline-primary btn-sm" disabled>Pagar</button></td>
+                    </tr>
+                    <tr>
+                        <td>2025-09</td>
+                        <td>$ 25.000</td>
+                        <td>10/10/2025</td>
+                        <td><span class="badge text-bg-success">Pagada</span></td>
+                        <td><button class="btn btn-outline-secondary btn-sm" disabled>Recibo</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -135,12 +135,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+STATIC_URL = "/static/"
+
+# Archivos fuente que TÚ editas (ej: static/css/auth.css, static/img/logo.png)
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# Carpeta DESTINO a la que collectstatic copiará todo para servir en producción
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -148,5 +152,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
 MEDIA_ROOT = '/home/EmilianoG96/isdm_pay_cupon_web/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/EmilianoG96/isdm_pay_cupon_web/static'
-STATIC_URL = '/static/'

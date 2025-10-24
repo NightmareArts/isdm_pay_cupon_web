@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, CreateView
 from django.urls import reverse_lazy
 from django import forms
 from users.models import User
+from .forms import StyledSignupForm
 
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = "pages/home.html"
@@ -36,5 +37,5 @@ class SignupForm(forms.ModelForm):
 
 class SignupView(CreateView):
     template_name = "auth/signup.html"
-    form_class = SignupForm
+    form_class = StyledSignupForm
     success_url = reverse_lazy("login")
